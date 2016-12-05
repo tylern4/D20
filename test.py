@@ -10,18 +10,17 @@ def roll(die=20,num=1):
     random.RandomState()
     return random.randint(1,high=die,size=num)
 
-#Check whether to print colors or not
-from termcolor import colored,cprint
-if 'termcolor' not in sys.modules:
-	print_green = lambda x: print(x)
-	print_red = lambda x: print(x)
-	print_blue = lambda x: print(x)
-	print_white = lambda x: print(x)
-else: 
+try:
+	from termcolor import colored,cprint
 	print_green = lambda x: cprint(x,'green',attrs=['bold'])
 	print_red = lambda x: cprint(x,'red',attrs=['bold'])
 	print_blue = lambda x: cprint(x,'blue',attrs=['bold'])
 	print_white = lambda x: cprint(x,'white',attrs=['bold'])
+except ImportError:
+	print_green = lambda x: print(x)
+	print_red = lambda x: print(x)
+	print_blue = lambda x: print(x)
+	print_white = lambda x: print(x)
 
 #(Credit: http://stackoverflow.com/a/20007730)
 import math

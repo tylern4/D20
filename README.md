@@ -12,6 +12,7 @@ Total for 1d20:
 20
 
 * Critical misses give:
+
 Critical Miss! 1
 Total for 1d20:
 1

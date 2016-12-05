@@ -1,9 +1,15 @@
 #!/usr/bin/env python
-import dice
 from termcolor import colored,cprint
-
 import argparse
 import sys
+from numpy import random
+
+def roll(die=20,num=1):
+    die += 1
+    random.RandomState()
+    return random.randint(1,high=die,size=num)
+
+
 print_green = lambda x: cprint(x,'green',attrs=['bold'])
 print_red = lambda x: cprint(x,'red',attrs=['bold'])
 print_blue = lambda x: cprint(x,'blue',attrs=['bold'])
@@ -12,12 +18,11 @@ print_white = lambda x: cprint(x,'white',attrs=['bold'])
 import math
 ordinal = lambda n: "%d%s" % (n,"tsnrhtdd"[(math.floor(n/10)%10!=1)*(n%10<4)*n%10::4])
 
-
 def print_roll(args):
-	roll = str(args.n)+'d'+str(args.dice)
+	rol = str(args.n)+'d'+str(args.dice)
 	d = int(args.dice)
 	mod = int(args.m)
-	myroll = dice.roll(roll)
+	myroll = roll(d,int(args.n))
 	i = 0
 	for r in myroll:
 		i += 1
@@ -29,10 +34,10 @@ def print_roll(args):
 			print_white(str(ordinal(i))+" throw is a "+ str(r))
 	
 	if mod:
-		print_blue("Total for " + roll + " with modifier of " + str(mod) + ":")
+		print_blue("Total for " + rol + " with modifier of " + str(mod) + ":")
 		print_green(sum(myroll)+mod)
 	else:
-		print_blue("Total for " + roll + ":")
+		print_blue("Total for " + rol + ":")
 		print_green(sum(myroll))
 
 
@@ -47,7 +52,6 @@ try:
 		args.dice = '20'
 
 	print_roll(args)
-
 
 except:
 	e = sys.exc_info()[0]

@@ -20,7 +20,16 @@ Total for 1d20:
 ### Mupltiple rolls, Differet dice, Modifers
 To roll say 6 d8 with a +4 modifer:
 
-* `d20 8 -n 6 -m 4`
+* `d20 -d 8 -n 6 -m 4`
+
+### Can also roll with advantage or disadvantage
+To roll two and get the higher of the two rolls:
+
+* `d20 -A`
+
+Or the lower of the rolls:
+
+* `d20 -D`
 
 ## TODO
 * Make requirements.txt for pip
